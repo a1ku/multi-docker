@@ -18,3 +18,17 @@ after_success:
     - docker push a1ku/multi-nginx
     - docker push a1ku/multi-server
     - docker push a1ku/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "eu-west-1"
+    app: "multiple-containers"
+    env: "MultipleContainers-env"
+    bucket_name: "elasticbeanstalk-eu-west-1-906015301963"
+    bucket_path: "multiple-containers"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    
